@@ -1,4 +1,4 @@
-package ecommerce;
+package br.com.alura.ecommerce;
 
 import java.math.BigDecimal;
 
@@ -12,5 +12,18 @@ public class Order {
         this.orderId = orderId;
         this.amount = amount;
         this.email = email;
+    }
+
+    public String getEmail(){
+        return email;
+    }
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "orderId='" + orderId + '\'' +
+                ", amount=" + amount +
+                ", email='" + email + '\'' +
+                '}';
     }
 }
