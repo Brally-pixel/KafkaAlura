@@ -9,11 +9,11 @@ public class NewOrderMain {
     public static void main(String[] args) throws ExecutionException, InterruptedException {
         try (var orderDispacher = new KafkaDispatcher<Order>()) {
             try (var emailDispacher = new KafkaDispatcher<String>()) {
+                var email = Math.random() + "@email.com";
                 for (int i = 0; i < 10; i++) {
 
                     var orderId = UUID.randomUUID().toString();
                     var amount = BigDecimal.valueOf(Math.random() * 5000 + 1);
-                    var email = Math.random() + "@email.com";
 
                     var order = new Order(orderId, amount, email);
                     orderDispacher.send("ECOMMERCE_NEW_ORDER", email, order);
